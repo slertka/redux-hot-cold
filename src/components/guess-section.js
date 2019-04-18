@@ -1,14 +1,26 @@
-import React from 'react';
+import React from "react";
+import { connect } from "react-redux";
 
-import Feedback from './feedback';
-import GuessForm from './guess-form';
+import Feedback from "./feedback";
+import GuessForm from "./guess-form";
 
-export default function GuessSection(props) {
-  const { feedback, guessCount } = props;
+export function GuessSection(props) {
+  // const { feedback, guessCount } = props;
+  const guessCount = props.guesses.length;
   return (
     <section aria-label="Guess section" aria-describedby="feedback">
-      <Feedback feedback={feedback} guessCount={guessCount} />
-      <GuessForm onMakeGuess={guess => props.onMakeGuess(guess)} />
+      <Feedback feedback={props.feedback} guessCount={guessCount} />
+      <GuessForm
+      // onMakeGuess={guess => props.onMakeGuess(guess)}
+      />
     </section>
   );
 }
+
+const mapStateToProps = state => ({
+  feedback: state.feedback,
+  guesses: state.guesses,
+  guessCount: state.guessCount
+});
+
+export default connect(mapStateToProps)(GuessSection);

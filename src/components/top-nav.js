@@ -1,17 +1,14 @@
-import React from 'react';
+import React from "react";
+import { connect } from "react-redux";
 
-import './top-nav.css';
+import "./top-nav.css";
 
-export default function TopNav(props) {
+export function TopNav(props) {
   return (
     <nav>
       <ul className="clearfix">
         <li>
-          <a 
-            href="#what" 
-            className="what"
-            aria-label="How to play"
-          >
+          <a href="#what" className="what" aria-label="How to play">
             What?
           </a>
         </li>
@@ -40,3 +37,5 @@ export default function TopNav(props) {
     </nav>
   );
 }
+
+export default connect()(TopNav);
